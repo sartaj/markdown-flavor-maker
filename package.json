@@ -1,0 +1,24 @@
+{
+  "name": "markdown-flavor-maker",
+  "version": "0.0.0",
+  "description": "Add your own rules to Markdown",
+  "main": "",
+  "scripts": {
+    "coveralls": "npm run cover && cat coverage/lcov.info | coveralls",
+    "travis-test": "npm test && npm run cover && ((cat coverage/lcov.info | coveralls) || exit 0)",
+    "readme-docs": "jsdoc2md ./entry.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projectsocrates/markdown-flavor-maker.git"
+  },
+  "author": "",
+  "license": "Mozilla Public License, version 2.0",
+  "bugs": {
+    "url": "https://github.com/projectsocrates/markdown-flavor-maker/issues"
+  },
+  "homepage": "https://github.com/projectsocrates/markdown-flavor-maker#readme",
+  "devDependencies": {
+    "coveralls": "^2.11.3"
+  }
+}

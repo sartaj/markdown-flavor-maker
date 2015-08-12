@@ -1,4 +1,7 @@
 # Markdown Flavor Maker
+[![npm status](http://img.shields.io/npm/v/markdown-flavor-maker.svg)](https://www.npmjs.org/package/markdown-flavor-maker)
+[![dependency status](https://david-dm.org/projectsocrates/markdown-flavor-maker.svg)](https://david-dm.org/projectsocrates/markdown-flavor-maker)
+[![coverage status](http://img.shields.io/coveralls/sartaj/lean-web-components.svg)](https://coveralls.io/r/sartaj/lean-web-components)
 
 ## **Make your own flavor of markdown** 
 This tool allows you to add your own rules to markdown. It is highly inspired by [Mistune](https://github.com/lepture/mistune).
