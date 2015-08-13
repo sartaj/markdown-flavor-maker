@@ -24,8 +24,8 @@ flayvaMayka.render("**This drank.** It's got that ++purple++"),
 // Outputs <p><strong>This drank tho.</strong> It's got that <strong><span class="drank">purple</span></strong>.
 flayvaMayka.render("**This drank.** It's got that **++purple++**"), 
 
-// Outputs <p><span class="grill">This drank tho.</span> It's got that <strong><span class="drank">purple</span></strong>.
-flayvaMayka.render("**This $+drank+$. It's got that **++purple++**"), 
+// Outputs <p><span class="grill">This drank tho.</span> It's got that <span class="drank"><strong>purple</strong></span>.
+flayvaMayka.render("**This $+drank+$. It's got that ++**purple**++"), 
 
 // Available options
 flayvaMayka.addRule.brackets();
