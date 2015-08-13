@@ -37,5 +37,6 @@ flayvaMayka.addRule.regex();
 @@@@
 
   @sartaj I think this could be a commenting system. Perhaps we should [define comment](http://en.wikipedia.org/wiki/define)?
+  - @kitty Defining comment doesn't matter
 
 @@@@
