@@ -31,8 +31,6 @@ flayvaMayka.render("**This $+drank+$. It's got that ++**purple**++"),
 flayvaMayka.addRule.brackets();
 flayvaMayka.addRule.regex();
 
-```
-
 
 @@@@
 
@@ -40,3 +38,8 @@ flayvaMayka.addRule.regex();
   - @kitty Defining comment doesn't matter
 
 @@@@
+
+
+```
+
+
