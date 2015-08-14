@@ -1,32 +1,47 @@
 var test = require('tape')
 var flavorMaker = require('./')
+var fs = require('fs');
 
-
-test('test one!', function(t){
+test('inline element should convert to span', function(t){
   
-  var fm = flavorMaker()
+  var fm = flavorMaker();
 
-  fm.bracketize('++', '++', '<span class="plusplus">', '</span>')
+  fm.bracketize('++', '++', '<span class="plusplus">', '</span>');
   
-  var render = fm.render('Hello, ++world++')
+  var render = fm.render('Hello, ++world++');
 
-  t.equals(render, '<p>Hello, <span class="plusplus">world</span></p>\n')
+  t.equals(render, '<p>Hello, <span class="plusplus">world</span></p>\n');
 
-  t.end()
+  t.end();
 
 })
 
-test('test two!', function(t){
+test('block element should covert to div', function(t){
   
-  var fm = flavorMaker()
+  var fm = flavorMaker();
 
-  fm.bracketize('$-', '-$', '<div class="moneymoney">', '</div>')
+  fm.bracketize('$-------', '-------$', '<div class="moneymoney">', '</div>');
 
-  var render = fm.render('***Hello***, $-__world__-$')
+  var testBlock = fs.readFileSync('test.md', 'utf8');
+  var render = fm.render(testBlock);
 
-  t.equals(render, '<p><strong><em>Hello</em></strong>, <div class="moneymoney"><strong>world</strong></div></p>\n')
+  t.equals(render, 
+  '<h2 id="what-s-up">What&#39;s up</h2>\n' +
+  '<p>++Drank for all the peoplez++</p>\n' + 
+  '<div class="moneymoney">\n' + 
+  '<p>@bob I don&#39;t get what this means?</p>\n' +
+  '<ul>\n<li>@sarah It means <strong>whatever</strong> you want to mean.</li>\n</ul>\n' +
+  '</div>\n');
 
-  t.end()
+  /** string that current passes
+    '<h2 id="what-s-up">What&#39;s up</h2>\n' +
+  '<p>++Drank for all the peoplez++</p>\n' + 
+  '<p>$-------</p>\n<p>@bob I don&#39;t get what this means?</p>\n' +
+  '<ul>\n<li>@sarah It means <strong>whatever</strong> you want to mean.</li>\n</ul>\n' +
+  '<p>-------$</p>\n');
+  **/
 
-})
+  t.end();
+
+});
 
