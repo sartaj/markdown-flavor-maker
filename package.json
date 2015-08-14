@@ -4,6 +4,7 @@
   "description": "Add your own rules to Markdown",
   "main": "",
   "scripts": {
+    "test" : "node test.js",
     "coveralls": "npm run cover && cat coverage/lcov.info | coveralls",
     "travis-test": "npm test && npm run cover && ((cat coverage/lcov.info | coveralls) || exit 0)",
     "readme-docs": "jsdoc2md ./entry.js"
