@@ -14,11 +14,11 @@ var flayvaMayka = require('markdown-flavor-maker');
 // Exposes marked setOptions function.
 flayvaMayka.setOptions();
 
-flayvaMayka.addRule.brackets('++', '++').replace('<span class="drank">','</span>');
+flayvaMayka.bracketize('++', '++', '<span class="drank">','</span>');
 
-flayvaMayka.addRule.brackets('$+', '+$').replace('<h1 class="grill">','</h1>');
+flayvaMayka.bracketize('$+', '+$', '<h1 class="grill">','</h1>');
 
-// Outputs <p><strong>This drank tho.</strong> It's got that <span class="drank">purple</span>.
+// Outputs <p><strong>This drank.</strong> It's got that <span class="drank">purple</span>.
 flayvaMayka.render("**This drank.** It's got that ++purple++"), 
 
 // Outputs <p><strong>This drank tho.</strong> It's got that <strong><span class="drank">purple</span></strong>.
@@ -29,7 +29,6 @@ flayvaMayka.render("**This $+drank+$. It's got that ++**purple**++"),
 
 // Available options
 flayvaMayka.addRule.brackets();
-flayvaMayka.addRule.regex();
 
 
 @@@@
