@@ -19,6 +19,11 @@
   },
   "homepage": "https://github.com/projectsocrates/markdown-flavor-maker#readme",
   "devDependencies": {
-    "coveralls": "^2.11.3"
+    "coveralls": "^2.11.3",
+    "tape": "^4.1.0"
+  },
+  "dependencies": {
+    "marked": "^0.3.5",
+    "quotemeta": "0.0.0"
   }
 }
