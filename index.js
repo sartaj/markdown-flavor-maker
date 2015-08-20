@@ -44,7 +44,7 @@ function fm(){
         if(test) var bound = test.input.slice(test.index-3, test.index + test[1].length + 4)
 
         if(test && p_regx.exec(bound)){
-          var trgx = new RegExp(qm('<p>' + rules[0] + '</p>') + '([\\s\\S]*?)' + qm('<p>' + rules[1] + '</p>'))
+          trgx = new RegExp(qm('<p>' + rules[0] + '</p>') + '([\\s\\S]*?)' + qm('<p>' + rules[1] + '</p>'))
           test = trgx.exec(slice)
         }
 
