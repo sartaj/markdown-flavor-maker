@@ -8,7 +8,7 @@ var p_regx = new RegExp(qm(p_rules[0]) + '([\\s\\S]*?)' + qm(p_rules[1]), 'g')
 module.exports =  fm
 
 function fm(){
-  
+
   var newRules = []
 
   return {
@@ -55,9 +55,8 @@ function fm(){
         else matching = false
       }
     })
-    
+
     return text
 
   }
 }
-
