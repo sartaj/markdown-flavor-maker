@@ -34,10 +34,10 @@ var marked = require('marked');
 var flavoredMarkdown = fs.readFileSync('TexasTeaFlavoredMarkdown.md');
 
 // Create an inline bracket by making the replacement a span
-flayvaMayka.bracketize('++', '++', '<span class="Tea-texas">','</span>');
+flaverMaker.bracketize('++', '++', '<span class="Tea-texas">','</span>');
 
 // Create a block bracket by making the replacement a div
-flayvaMayka.bracketize('@@', '@@', '<div class="Comments">','</div>');
+flaverMaker.bracketize('@@', '@@', '<div class="Comments">','</div>');
 
 /* Returns
 
@@ -51,6 +51,6 @@ flayvaMayka.bracketize('@@', '@@', '<div class="Comments">','</div>');
 
 */
 
-var rendered = flayvaMayka.render(marked(texasFlavored));
+var rendered = flaverMaker.render(marked(texasFlavored));
 
 ```
