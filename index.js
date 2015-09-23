@@ -1,5 +1,7 @@
-var marked = require('marked')
-var qm = require('quotemeta')
+var marked = require('marked') // markdown parser and compiler
+
+var qm = require('quotemeta')  // precedes characters not matching /[A-Za-z_0-9]/
+                               // by a backslash in the returned string
 
 var p_rules = ['<p>', '</p>', '', '']
 
@@ -16,43 +18,47 @@ function fm(){
     render: render
   }
 
+  /**
+   * Add a new conversion rule
+   *
+   * @param  {String} a   start mark
+   * @param  {String} b   end mark
+   * @param  {String} x   start output
+   * @param  {String} y   end output
+   * @return {void}       nothing
+   */
   function bracketize(a, b, x, y){
-
-    var rules = [a, b, x, y]
-    newRules.push(rules)
-
+    newRules.push([a, b, x, y])
   }
 
+  /**
+   * Convert given markdown HTML to your custom HTML using the rules you added
+   */
   function render (text){
 
     newRules.forEach(function(rules){
+
+      // find all text between the start and end marks of this rule
       var regx = new RegExp(qm(rules[0]) + '([\\s\\S]*?)' + qm(rules[1]))
-      var matching = true;
-      var matches = []
-      while(matching){
-        var i = 0
-        if(matches.length){
-          var t = matches.length - 1
-          i = t.index + t[0].length
-        }
-        else trgx = regx
-        var slice = text.slice(i)
-        var test = trgx.exec(slice)
+      while(true){
 
+        // look for instances of this rule in the given text
+        var match = regx.exec(text)
+        if (!match) break;
 
+        // match.index is the start index of the match
+        // match[1] is the text captured between the rule's marks
+        // take the matched text, and surrounding <p> tags if there are any
+        var expanded = text.slice(match.index-3, match.index + match[1].length + 4)
 
-        if(test) var bound = test.input.slice(test.index-3, test.index + test[1].length + 4)
-
-        if(test && p_regx.exec(bound)){
-          trgx = new RegExp(qm('<p>' + rules[0] + '</p>') + '([\\s\\S]*?)' + qm('<p>' + rules[1] + '</p>'))
-          test = trgx.exec(slice)
+        // maybe `marked` decided to surround our rule with <p> tags...
+        if (p_regx.exec(expanded)) {
+          regx = new RegExp(qm('<p>' + rules[0] + '</p>') + '([\\s\\S]*?)' + qm('<p>' + rules[1] + '</p>'))
+          match = regx.exec(text)
         }
 
-        if(test){
-          slice = slice.replace(trgx, rules[2] + render(test[1]) + rules[3])
-          text = text.slice(0, i) + slice
-        }
-        else matching = false
+        // apply the current rule to the text
+        text = text.replace(regx, rules[2] + render(match[1]) + rules[3])
       }
     })
 
